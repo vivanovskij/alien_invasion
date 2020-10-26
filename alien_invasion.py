@@ -93,9 +93,7 @@ class AlienInvasion:
         # Сброс игровых настроек.
         self.settings.initialize_dynamic_settings()
         self.stats.game_active = True
-        self.sb.prep_score()
-        self.sb.prep_level()
-        self.sb.prep_ships()
+        self.sb.prep_images()
         # Очистка списков пришельцев и снарядов.
         self.aliens.empty()
         self.bullets.empty()
@@ -133,14 +131,17 @@ class AlienInvasion:
             self.sb.prep_score()
             self.sb.check_high_score()
         if not self.aliens:
-            # Уничтожение существующих снарядов и создание нового флота.
-            self.bullets.empty()
-            self._create_fleet()
-            self.settings.increase_speed()
+            self._start_new_level()
 
-            # Увеличение уровня
-            self.stats.level += 1
-            self.sb.prep_level()
+    def _start_new_level(self):
+        """Старт нового уровня"""
+        # Уничтожение существующих снарядов и создание нового флота.
+        self.bullets.empty()
+        self._create_fleet()
+        self.settings.increase_speed()
+        # Увеличение уровня
+        self.stats.level += 1
+        self.sb.prep_level()
 
     def _update_aliens(self):
         """
