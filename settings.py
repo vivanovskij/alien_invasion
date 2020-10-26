@@ -12,10 +12,10 @@ class Settings():
         self.ship_limit = 3
 
         # Параметры снаряда
-        self.bullet_width = 300
+        self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (200, 60, 60)
-        self.bullet_multi_killer = True
+        self.bullet_multi_killer = False
         self.bullets_allowed = 3
 
         # Настройки пришельцев.
